@@ -51,12 +51,12 @@ function myFunction() {
 
   var count = 1;
 
-  var arrayLength = list.length;/*
-  if  (arrayLength == numClass){
+  var arrayLength = list.length;
+  if  (arrayLength == numClass + 1){
       list = [0]
       alert("Every student has been called on")
   }
-  */
+  
   x = random(list, numClass);
 
   list += [", " + x];
@@ -69,7 +69,7 @@ function myFunction() {
 
 
 function getRandInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) ) + min;
+  return Math.floor(Math.random() * (max - min) ) + min;
 }
 
 
