@@ -35,52 +35,39 @@ body {
 
 <button type="button" onclick="myFunction()" onerror="error">Generate</button>
 
-
-
 <p id="list">List</p>
-
 <p id="output">Output</p>
 
 <script>
-var z = 0;
+//var z = 0;
 var list = ["[0"];
 var x = 0;
 var unusedList = new Array();
-//console.log(unusedList);
-
 var i = 1;
-//console.log(unusedList);
 
 
 function myFunction() {
   for (i; i <= document.getElementById("input").value; i++) {
     unusedList.push(i);
-  }
-  /*if (i == document.getElementById("input").value) {
-    unusedList.push(i);
-    i++
-  }*/
-    
+  } 
 
-  console.log(unusedList);
+  if (unusedList.length == 0 )
+  {error()
+  return;
+  }
+  
+
   var numClass = document.getElementById("input").value;
 
-  var count = 1;
-
-  /*var arrayLength = unusedList.length;
-  if  (arrayLength == 0 ){
-    list = ["[0"]
-      alert("Every student has been called on")
-  }*/
+  var arrayLength = unusedList.length;
   
   x = random(list, unusedList.length, unusedList);
   
-  
   list += [", " + x];
-
   
   document.getElementById("list").innerHTML = list + "]";
   document.getElementById("output").innerHTML = "Student: " + x;
+  console.log(unusedList);
 
 }
 
@@ -92,27 +79,22 @@ function getRandInt(min, max) {
 
 function random(list, max, unusedList) {
   var x = getRandInt(0, max);
-  
   var calledStudent = unusedList[x];
-  //console.log(unusedList);
+
   const index = x;
   if (index > -1) {
     unusedList.splice(index, 1);
   }
-  
-
-  /*
-  if (list.indexOf(x) > -1){
-    x = random(list, numClass);
-  }*/
-  
 
   return calledStudent;
 }
 function error(){
-  /*list = ["[0"];
-  var i = 1;
-  alert("Every student has been called on")*/
+  list = ["[0"];
+  x = 0;
+  unusedList = new Array();
+  i = 1;
+  alert("Every student has been called on")
+  myFunction()
 }
 
 
