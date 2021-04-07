@@ -27,7 +27,7 @@ body {
 
 <h1>Random Generator</h1>
 
-<form id="myForm">
+<form id="myForm" "myForm()">
   Number of Students: <input type="number" id="input" name="fname" value="30"><br>
 </form>
 
@@ -45,20 +45,37 @@ body {
 var z = 0;
 var list = ["[0"];
 var x = 0;
+var unusedList = new Array();
+//console.log(unusedList);
+
+var i = 1;
+//console.log(unusedList);
+
 
 function myFunction() {
+  for (i; i <= document.getElementById("input").value; i++) {
+    unusedList.push(i);
+  }
+  /*if (i == document.getElementById("input").value) {
+    unusedList.push(i);
+    i++
+  }*/
+    
+
+  console.log(unusedList);
   var numClass = document.getElementById("input").value;
 
   var count = 1;
 
-  var arrayLength = list.length;
-  if  (arrayLength == numClass + 1){
-      list = [0]
+  var arrayLength = unusedList.length;
+  if  (arrayLength == 0 ){
+    list = ["[0"]
       alert("Every student has been called on")
   }
   
-  x = random(list, numClass);
-
+  x = random(list, unusedList.length, unusedList);
+  
+  
   list += [", " + x];
 
   
@@ -73,17 +90,28 @@ function getRandInt(min, max) {
 }
 
 
-function random(list, numClass) {
-  var x = getRandInt(1,numClass);
+function random(list, max, unusedList) {
+  var x = getRandInt(0, max);
+  
+  var calledStudent = unusedList[x];
+  //console.log(unusedList);
+  const index = x;
+  if (index > -1) {
+    unusedList.splice(index, 1);
+  }
+  
 
+  /*
   if (list.indexOf(x) > -1){
     x = random(list, numClass);
-  }
+  }*/
+  
 
-  return x;
+  return calledStudent;
 }
 function error(){
   list = ["[0"];
+  var i = 1;
   alert("Every student has been called on")
 }
 
